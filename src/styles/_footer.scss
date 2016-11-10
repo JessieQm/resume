@@ -1,0 +1,27 @@
+#footer{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	div{
+	   text-align:center;
+	   color:#fff;
+	   flex:1;
+	   font-size:14px
+	}
+}
+#header{
+	display:flex;
+	justify-content: space-around;
+	align-items:center;
+	button{
+	  color:#fff;
+	  border:0;
+	  height:100%;
+	  background: transparent;
+
+	}
+	a{
+	color:#fff;
+	  text-decoration:none;
+	}
+}
