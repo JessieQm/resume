@@ -11,9 +11,15 @@
     height: 20%;
     font-size: 30px;
     font-weight: 800;
-    color: #d55555; }
-    .slide1 .tit span {
-      color: #fff; }
+    color: #d55555;
+    position: relative;
+    border: 1px solid black; }
+  .slide1 .border {
+    width: 80%;
+    height: 15%;
+    margin-top: 10px; }
+  .slide1 .person {
+    position: absolute; }
 
 .slide2 {
   text-align: center;

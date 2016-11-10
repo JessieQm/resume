@@ -3137,13 +3137,12 @@ body {
     height: 20%;
     font-size: 30px;
     font-weight: 800;
-    color: #d55555;
-    position: relative; }
+    color: #d55555; }
+    .slide1 .tit span {
+      color: #fff; }
   .slide1 .border {
     width: 80%;
     height: 15%;
-    margin-top: 10px; }
-  .slide1 .person {
     position: absolute; }
 
 .slide2 {
