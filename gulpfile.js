@@ -156,6 +156,11 @@ gulp.task('copy-images',function(){
   .pipe(gulp.dest('./www/images'));
 //找到images文件下的jpg文件
 })
+gulp.task('copy-font',function(){
+  return gulp.src('./src/font/**/*')
+  .pipe(gulp.dest('./www/font'));
+//找到images文件下的jpg文件
+})
 
 
 //设置监控
@@ -166,16 +171,16 @@ gulp.task('watch',function(){
   watch('src/scripts/**/*.js',{
     name:'JS',
     emitOnGlob:false,
-  },queue.getHandler('packjs','verJs','html'));
+  },queue.getHandler('packjs'));
 
 //queue.getHandler('packjs','verJs','html'));
   watch('src/styles/**/*.*',{
     name:'CSS',
     emitOnGlob:false,
-  },queue.getHandler('sass','verCss','html'));
-
+  },queue.getHandler('sass'));
+//queue.getHandler('sass','verCss','html'));
 
 })
 
 //设置默认任务 
-gulp.task('default',['webserver','watch','copy-images']);
+gulp.task('default',['webserver','watch','copy-images','copy-font']);

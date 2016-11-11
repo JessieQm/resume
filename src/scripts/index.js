@@ -29,14 +29,14 @@ module.exports = $;
 $('#theScroll').hide();
 $('#swiper-container').show();
 $('#enter').tap(function(){
-    console.log(11);
+    // console.log(11);
     $.post('/api/skill',{},function(response){
         console.log(response);
         $('#thelist li').remove(); 
         var li='';
         for (var i = 0; i < response.length; i++) {
             console.log(response[i]);  
-            li+="<li>";   
+            li+="<li class='li_skill'>";   
             li+='<h2>'+response[i].category+'</h2>';
             li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
             li+='<p>学习时间：<span>'+response[i].time+'</span></p>';
@@ -57,36 +57,63 @@ $('#enter').tap(function(){
    
 
 });
-    $('#project').tap(function(){
-      console.log(13);
-        
+
+$('#skill').tap(function(){
+    console.log(11);
+    $.post('/api/skill',{},function(response){
+        console.log(response);
+        $('#thelist li ').remove(); 
+        var li='';
+        for (var i = 0; i < response.length; i++) {
+            console.log(response[i]);  
+            li+="<li class='li_skill'>";   
+            li+='<h2>'+response[i].category+'</h2>';
+            li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
+            li+='<p>学习时间：<span>'+response[i].time+'</span></p>';
+            li+='<p>掌握程度：<span>'+response[i].level+'</span></p>';
+            li+='</li>';
+        } 
+        $('#thelist').append($(li))
+          var iScroll = require('./components/iscroll/iscroll');
+          var myScroll = new iScroll('#wrapper',{mouseWheel:true});
+          document.addEventListener('touchmove',function(e){
+                e.preventDefault();
+               })
+    });
+   
+
+});
+
+
+
+    $('#project').tap(function(){     
       $.post('/api/project',{},function(response){
           console.log(response);
           $('#thelist li').remove(); 
           var li='';
           for (var i = 0; i < response.length; i++) {
               console.log(response[i]);  
-              li+="<li>";   
-              li+='<h2>'+response[i].category+'</h2>';
+              li+="<li class='proli'>";   
+              li+='<h2>'+response[i].category+'</h2>';//+response[i].image+
+              li+='<img src="images/bg1.png"/>';
               li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
               li+='<p>学习时间：<span>'+response[i].url+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].image+'</span></p>';
               li+='<p>掌握程度：<span>'+response[i].description+'</span></p>';
               li+='<p>掌握程度：<span>'+response[i].detail+'</span></p>';
               li+='<p>掌握程度：<span>'+response[i].tech+'</span></p>';
               li+='</li>';
           }
-          $('#thelist').append($(li))
-            var iScroll = __webpack_require__(8);
-            var myScroll = new iScroll('#wrapper',{mouseWheel:true});
-            document.addEventListener('touchmove',function(e){
-                  e.preventDefault();
-                 })
+          $('#thelist').append($(li)); 
+          var iScroll = require('./components/iscroll/iscroll');
+          var myScroll = new iScroll('#wrapper',{mouseWheel:true});
+          document.addEventListener('touchmove',function(e){
+                e.preventDefault();
+               })
       });
       
 
   });
-    $('#my').tap(function(){
+    $('#process').tap(function(){
       console.log(13);
       $.post('/api/work',{},function(response){
           console.log(response);
@@ -104,12 +131,12 @@ $('#enter').tap(function(){
               li+='<p>掌握程度：<span>'+response[i].posts+'</span></p>';
               li+='</li>';
           }
-          $('#thelist').append($(li))
-            var iScroll = __webpack_require__(8);
-            var myScroll = new iScroll('#wrapper',{mouseWheel:true});
-            document.addEventListener('touchmove',function(e){
-                  e.preventDefault();
-                 })
+            $('#thelist').append($(li))
+           var iScroll = require('./components/iscroll/iscroll');
+           var myScroll = new iScroll('#wrapper',{mouseWheel:true});
+           document.addEventListener('touchmove',function(e){
+                e.preventDefault();
+               })
       });
       
 

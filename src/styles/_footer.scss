@@ -6,7 +6,7 @@
 	   text-align:center;
 	   color:#fff;
 	   flex:1;
-	   font-size:14px
+	   font-size:14px;
 	}
 }
 #header{
@@ -15,13 +15,28 @@
 	align-items:center;
 	button{
 	  color:#fff;
+	  font-weight:800;
 	  border:0;
 	  height:100%;
+	  outline:none;
 	  background: transparent;
+      i{
+          font-size:30px;
+          font-weight:800;
+      }
+	}
+	img{
+	  width:80px;
+	  height:80px;
+	  border-radius:50%;
+	  box-shadow: 0px 0px 2px #fff;    
+	}
+}
+.proli{
+	img{
+	 width:100%;
+	 height:100px;
 
 	}
-	a{
-	color:#fff;
-	  text-decoration:none;
-	}
+
 }
