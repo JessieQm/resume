@@ -3089,7 +3089,7 @@ body {
 
 #footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center; }
   #footer div {
     text-align: center;
@@ -3108,7 +3108,7 @@ body {
 
 #header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center; }
   #header button {
     color: #fff;
@@ -3121,10 +3121,11 @@ body {
       font-size: 30px;
       font-weight: 800; }
   #header img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    box-shadow: 0px 0px 2px #fff; }
+    box-shadow: 0px 0px 2px #fff;
+    margin-top: 3px; }
 
 .proli img {
   width: 100%;
@@ -3164,7 +3165,8 @@ body {
     .kill div img {
       flex: 1;
       border-radius: 10px;
-      margin-right: 10px; }
+      margin-right: 10px;
+      height: auto; }
     .kill div div {
       flex: 2;
       display: flex;
@@ -3204,18 +3206,21 @@ body {
     border-radius: 5px; }
   .my .link {
     width: 70%;
-    font-size: 16px; }
+    font-size: 16px;
+    margin: 30px 0; }
   .my .photo {
     width: 50%;
-    height: 130px;
+    height: 90px;
     border-radius: 10px;
     font-size: 16px;
     padding: 10px; }
   .my .ewm {
     width: 45%;
-    height: 125px; }
+    height: 125px;
+    margin: 20px 0; }
   .my .computer {
     width: 80%;
+    height: 100px;
     margin-top: 20px; }
 
 .slide1 {
