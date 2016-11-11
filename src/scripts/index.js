@@ -17,7 +17,8 @@ var mySwiper = new Swiper ('.swiper-container', {
   }, 
   onSlideChangeEnd: function(swiper){ 
     swiperAnimate.swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-  } 
+  }
+
 })   
 
 
@@ -30,29 +31,30 @@ $('#theScroll').hide();
 $('#swiper-container').show();
 $('#enter').tap(function(){
     // console.log(11);
+     $('#footer div').first().addClass('active');
     $.post('/api/skill',{},function(response){
-        console.log(response);
         $('#thelist li').remove(); 
         var li='';
         for (var i = 0; i < response.length; i++) {
             console.log(response[i]);  
-            li+="<li class='li_skill'>";   
-            li+='<h2>'+response[i].category+'</h2>';
+            li+="<li class='kill'>";   
+            // li+='<h2>'+response[i].category+'</h2>';
+            li+="<div><img src='"+response[i].image+"'/>";
+            li+='<div><span class="tit">'+response[i].category+'</span></p>';
             li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
             li+='<p>学习时间：<span>'+response[i].time+'</span></p>';
-            li+='<p>掌握程度：<span>'+response[i].level+'</span></p>';
-            li+='</li>';
+            li+='<p>掌握程度：<span>'+response[i].level+'</span></p></div>';
+            li+='</div></li>';
         } 
         $('#thelist').append($(li))
-        // $('#thelist').append($(li))；
-
          $('#theScroll').show();
          $('#swiper-container').hide();
           var iScroll = require('./components/iscroll/iscroll');
-          var myScroll = new iScroll('#wrapper',{mouseWheel:true});
+              myScroll = new iScroll('#wrapper',{mouseWheel:true});
           document.addEventListener('touchmove',function(e){
                 e.preventDefault();
                })
+
     });
    
 
@@ -60,25 +62,26 @@ $('#enter').tap(function(){
 
 $('#skill').tap(function(){
     console.log(11);
+    $('#footer div').removeClass('active');
+     $(this).addClass('active');
     $.post('/api/skill',{},function(response){
         console.log(response);
         $('#thelist li ').remove(); 
         var li='';
         for (var i = 0; i < response.length; i++) {
             console.log(response[i]);  
-            li+="<li class='li_skill'>";   
-            li+='<h2>'+response[i].category+'</h2>';
+            li+="<li class='kill'>";   
+            // li+='<h2>'+response[i].category+'</h2>';
+            li+="<div><img src='"+response[i].image+"'/>";
+            li+='<div><span class="tit">'+response[i].category+'</span></p>';
             li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
             li+='<p>学习时间：<span>'+response[i].time+'</span></p>';
-            li+='<p>掌握程度：<span>'+response[i].level+'</span></p>';
-            li+='</li>';
+            li+='<p>掌握程度：<span>'+response[i].level+'</span></p></div>';
+            li+='</div></li>';
         } 
         $('#thelist').append($(li))
-          var iScroll = require('./components/iscroll/iscroll');
-          var myScroll = new iScroll('#wrapper',{mouseWheel:true});
-          document.addEventListener('touchmove',function(e){
-                e.preventDefault();
-               })
+          
+          myScroll.refresh();
     });
    
 
@@ -86,122 +89,158 @@ $('#skill').tap(function(){
 
 
 
-    $('#project').tap(function(){     
+    $('#project').tap(function(){    
+     $('#footer div').removeClass('active');
+     $(this).addClass('active'); 
       $.post('/api/project',{},function(response){
           console.log(response);
+
           $('#thelist li').remove(); 
           var li='';
           for (var i = 0; i < response.length; i++) {
               console.log(response[i]);  
               li+="<li class='proli'>";   
-              li+='<h2>'+response[i].category+'</h2>';//+response[i].image+
-              li+='<img src="images/bg1.png"/>';
-              li+='<p>涉及内容：<span>'+response[i].name+'</span></p>';
-              li+='<p>学习时间：<span>'+response[i].url+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].description+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].detail+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].tech+'</span></p>';
+              li+='<h2>'+response[i].category+'</h2>';//
+              li+='<img src="'+response[i].image+'"/>';
+              li+='<p>网站名称：<span>'+response[i].name+'</span></p>';
+              li+='<p>网站链接：<span>'+response[i].url+'</span></p>';
+              li+='<p>公司描述：<span>'+response[i].description+'</span></p>';
+              li+='<p>项目内容：<span>'+response[i].detail+'</span></p>';
+              li+='<p>涉及内容：<span>'+response[i].tech+'</span></p>';
               li+='</li>';
           }
           $('#thelist').append($(li)); 
-          var iScroll = require('./components/iscroll/iscroll');
-          var myScroll = new iScroll('#wrapper',{mouseWheel:true});
-          document.addEventListener('touchmove',function(e){
-                e.preventDefault();
-               })
+          myScroll.refresh();
       });
       
 
   });
     $('#process').tap(function(){
-      console.log(13);
+      //console.log(13);
+       $('#footer div').removeClass('active');
+       $(this).addClass('active');
       $.post('/api/work',{},function(response){
           console.log(response);
           $('#thelist li').remove();
           var li='';
           for (var i = 0; i < response.length; i++) {
               console.log(response[i]);  
-              li+="<li>";   
-              li+='<h2>'+response[i].category+'</h2>';
-              li+='<p>涉及内容：<span>'+response[i].category+'</span></p>';
-              li+='<p>学习时间：<span>'+response[i].name+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].url+'</span></p>';
+              li+="<li class='processli'> <div>";   
+              li+='<h2>'+response[i].name+'</h2>';
+              li+='<p>公司性质：<span>'+response[i].category+'</span></p>';
+              li+='<p>公司网址：<span>'+response[i].url+'</span></p>';
               li+='<p>掌握程度：<span>'+response[i].image+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].time+'</span></p>';
-              li+='<p>掌握程度：<span>'+response[i].posts+'</span></p>';
-              li+='</li>';
+              li+='<p>工作时间：<span>'+response[i].time+'</span></p>';
+              li+='<p>担任职务：<span>'+response[i].posts+'</span></p>';
+              li+='</div></li>';
           }
             $('#thelist').append($(li))
-           var iScroll = require('./components/iscroll/iscroll');
-           var myScroll = new iScroll('#wrapper',{mouseWheel:true});
-           document.addEventListener('touchmove',function(e){
-                e.preventDefault();
-               })
+             myScroll.refresh();
       });
       
 
   });
 
+  $('#my').tap(function(){
+      //console.log(13);
+       
+       $('#footer div').removeClass('active');
+       $(this).addClass('active');
+       $('#thelist li').remove();
+       myScroll.refresh();
+          var li='';
+              li+="<li class='my'>"; 
+              li+="<div class='photo'>既然选择了远方，便只顾风雨兼程···</div>"; 
+              li+="<p class='link' >敬候佳音</p>";
+              li+="<span class='tel'>TEL:13053976636</span>";
+              li+="<img class='ewm' src='images/a67f2d67-2741-4616-81f1-7af20f2a827f-8944.png'/>";
+              li+="<img  class='computer' src='images/223f8a6b-e045-4321-b114-fef41e187e36.png'/>";
+              li+='</li>';
+            $('#thelist').append($(li));
 
-// 引入jweixin.js
-// var wx = require('./components/weixin/jweixin');
-// $.post("http://845286359.applinzi.com/php/getsign.php",{
-//       url:window.location.href
-//     },function(data){
-//             pos=data.indexOf('}');
-//             dataStr= data.substring( 0,pos+1);
-//             objData=JSON.parse(dataStr);
-//             console.log(dataStr);
-//             wx.config({
-//             debug: true,
-//             appId: objData.appId,
-//             timestamp: objData.timestamp,
-//             nonceStr: objData.nonceStr,
-//             signature: objData.signature,
-//             jsApiList: [
-//              'getLocation','openLocation'
-//             ]
-//           });
+  });
+//引入jweixin.js
+var src="";
+if(localStorage.getItem('photo')){
+   src=localStorage.getItem('photo');
+}else{
+  src="images/a.jpg";
+}
+$('#photo').attr('src',src);
+
+var wx = require('./components/weixin/jweixin');
+$.post("http://845286359.applinzi.com/php/getsign.php",{
+      url:window.location.href
+    },function(data){
+            pos=data.indexOf('}');
+            dataStr= data.substring( 0,pos+1);
+            objData=JSON.parse(dataStr);
+            console.log(dataStr);
+            wx.config({
+            debug: true,
+            appId: objData.appId,
+            timestamp: objData.timestamp,
+            nonceStr: objData.nonceStr,
+            signature: objData.signature,
+            jsApiList: [
+             'getLocation','openLocation','chooseImage'
+            ]
+          });
         
-// })
+})
 
 
 
-// var b=document.getElementById('myposition');
-//         b.onclick=function(){
-//       wx.getLocation({
+var b=document.getElementById('myposition');
+        b.onclick=function(){
+      wx.getLocation({
 
-//             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+            type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
         
-//             success: function (res) {
+            success: function (res) {
         
-//                 var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
         
-//                 var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
         
-//                 var speed = res.speed; // 速度，以米/每秒计
+                var speed = res.speed; // 速度，以米/每秒计
         
-//                 var accuracy = res.accuracy; // 位置精度
+                var accuracy = res.accuracy; // 位置精度
                 
-//                 wx.openLocation({
+                wx.openLocation({
     
-//                     latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
+                    latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
                 
-//                     longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
+                    longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
                 
-//                     name: '', // 位置名
+                    name: '', // 位置名
                 
-//                     address: '', // 地址详情说明
+                    address: '', // 地址详情说明
                 
-//                     scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
+                    scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
                 
-//                     infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+                    infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
                 
-//                 });
+                });
             
     
-//           }
+          }
     
-//       });
+      });
     
-//     }
+    }
+    var m=document.getElementById('mycloum');
+        m.onclick=function(){
+         wx.chooseImage({
+                count: 1, // 默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    $('#photo').attr('src',localIds[0]);
+                    localStorage.setItem('photo',localIds[0]);
+                }
+        });
+
+    
+    }
