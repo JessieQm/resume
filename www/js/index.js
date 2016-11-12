@@ -99,7 +99,13 @@
 	            li+='<p>掌握程度：<span>'+response[i].level+'</span></p></div>';
 	            li+='</div></li>';
 	        } 
-	        $('#thelist').append($(li))
+	        $('#thelist').append($(li));
+	        $('#thelist').append($(li));
+	          $('.kill img').tap(function(){
+	              plus.gallery.save( $(this).attr('src'), function () {
+	          alert( "保存图片到相册成功" );
+	        } );
+	             });
 	         $('#theScroll').show();
 	         $('#swiper-container').hide();
 	          var iScroll = __webpack_require__(8);
@@ -306,6 +312,7 @@
 	    }
 	    // 拍照
 	    function captureImage(){
+	      alert(1);
 	      var cmr = plus.camera.getCamera();
 	      var res = cmr.supportedImageResolutions[0];
 	      var fmt = cmr.supportedImageFormats[0];
@@ -328,75 +335,144 @@
 	      );
 	    }  
 	    
-	    var my=document.getElementById('my');
-	    my.onclick=find;
-	    document.addEventListener( "plusready", function(){
-	      }, false );
-	      function find(){
-	        plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function (addressbook) {
-	          addressbook.find(["displayName","phoneNumbers"],function(contacts){
-	          var list=document.getElementById('thelist');
-	              list.innerHTML="";
-	            for(var i=0;i<contacts.length;i++){
-	              var li=document.createElement('li');
-	              li.innerHTML+='姓名：'+contacts[i].displayName+'电话：'+contacts[i].phoneNumbers[0].value;
-	              list.appendChild(li);
-	            }
+	    // var my=document.getElementById('my');
+	    // my.onclick=find;
+	    // document.addEventListener( "plusready", function(){
+	    //   }, false );
+	    //   function find(){
+	    //     plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function (addressbook) {
+	    //       addressbook.find(["displayName","phoneNumbers"],function(contacts){
+	    //       var list=document.getElementById('thelist');
+	    //           list.innerHTML="";
+	    //         for(var i=0;i<contacts.length;i++){
+	    //           var li=document.createElement('li');
+	    //           li.innerHTML+='姓名：'+contacts[i].displayName+'电话：'+contacts[i].phoneNumbers[0].value;
+	    //           list.appendChild(li);
+	    //         }
 	            
-	          }, function () {
-	            alert("error");
-	          },{multiple:true});
-	        },function(e){
-	          alert("Get address book failed: " + e.message);
-	        });
-	      }    
+	    //       }, function () {
+	    //         alert("error");
+	    //       },{multiple:true});
+	    //     },function(e){
+	    //       alert("Get address book failed: " + e.message);
+	    //     });
+	    //   }    
 	    // 扩展API加载完毕后调用onPlusReady回调函数 
-	    document.addEventListener( "plusready", onPlusReady, false );
-	    // 扩展API加载完毕，现在可以正常调用扩展API 
-	    
-	    // 从相册中选择图片 
-	    function galleryImg() {
-	      // 从相册中选择图片
-	      console.log("从相册中选择图片:");
-	        plus.gallery.pick( function(path){
-	          console.log(path);
-	          document.getElementById('photo').src=path;
-	        }, function ( e ) {
-	          console.log( "取消选择图片" );
-	        }, {filter:"image"} );
-	    }
-	    
-	    
-	    // 扩展API加载完毕后调用onPlusReady回调函数 
-	    document.addEventListener( "plusready", onPlusReady, false );
-	    // 扩展API加载完毕，现在可以正常调用扩展API
-	    
-	    document.getElementById('myposition').onclick=function(){
-	      alert(1);
-	     plus.geolocation.getCurrentPosition( function ( p ) {
-	       alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
-	       var ptObj = new plus.maps.Map("map");
-	       var point = new plus.maps.Point(p.coords.longitude ,p.coords.latitude);
-	       ptObj.centerAndZoom( point,18 );
-	         plus.maps.Map.reverseGeocode(point,{},function(event){
-	       var address = event.address;  // 转换后的地理位置
-	       var point = event.coord;  // 转换后的坐标信息
-	       var coordType = event.coordType;  // 转换后的坐标系类型
-	       var span=document.getElementById('mapWrap').getElementsByTagName('span')[0];
-	       span.innerHTML="当前附近位置:"+address;
-	     },function(e){
-	       alert("Failed:"+JSON.stringify(e));
-	     });
-	     
-	     
-	     }, function ( e ) {
-	       alert( "Geolocation error: " + e.message );
-	     } );
+	  document.getElementById('mycloum').onclick=captureImage;
+	        // 扩展API加载完毕后调用onPlusReady回调函数 
+	      document.addEventListener( "plusready", onPlusReady, false );
+	      // 扩展API加载完毕，现在可以正常调用扩展API 
+	      function onPlusReady() {
+	        console.log("plusready");
+	      }
+	      // 拍照
+	      function captureImage(){
+	//        alert(1);
+	        var cmr = plus.camera.getCamera();
+	        var res = cmr.supportedImageResolutions[0];
+	        var fmt = cmr.supportedImageFormats[0];
+	        console.log("Resolution: "+res+", Format: "+fmt);
+	        cmr.captureImage( function( path ){
+	            alert( "Capture image success: "+path);
+	            plus.io.resolveLocalFileSystemURL( path, function( entry ) {
+	              // 可通过entry对象操作test.html文件 
+	  //            alert(entry.toLocalURL());
+	              document.getElementById('photo').src=entry.toLocalURL();
+	            }, function ( e ) {
+	              alert( "Resolve file URL failed: " + e.message );
+	            } );
+	          },
+	          function( error ) {
+	            alert( "Capture image failed: " + error.message );
+	          },
+	          {resolution:res,format:fmt}
+	        );
+	      }  
 	      
-	    }
-	    document.getElementById('close').onclick=function(){
-	      document.getElementById('mapWrap').style.display="none";
-	    }
+	      // var my=document.getElementById('my');
+	      // my.onclick=find;
+	      // document.addEventListener( "plusready", function(){
+	      //   }, false );
+	      //   function find(){
+	      //     plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function (addressbook) {
+	      //       addressbook.find(["displayName","phoneNumbers"],function(contacts){
+	      //       var list=document.getElementById('thelist');
+	      //           list.innerHTML="";
+	      //         for(var i=0;i<contacts.length;i++){
+	      //           var li=document.createElement('li');
+	      //           li.innerHTML+='姓名：'+contacts[i].displayName+'电话：'+contacts[i].phoneNumbers[0].value;
+	      //           list.appendChild(li);
+	      //         }
+	              
+	      //       }, function () {
+	      //         alert("error");
+	      //       },{multiple:true});
+	      //     },function(e){
+	      //       alert("Get address book failed: " + e.message);
+	      //     });
+	      //   }    
+	      // 扩展API加载完毕后调用onPlusReady回调函数 
+	      document.addEventListener( "plusready", onPlusReady, false );
+	      // 扩展API加载完毕，现在可以正常调用扩展API 
+	      
+	      // 从相册中选择图片 
+	      function galleryImg() {
+	        // 从相册中选择图片
+	        console.log("从相册中选择图片:");
+	          plus.gallery.pick( function(path){
+	            console.log(path);
+	            document.getElementById('photo').src=path;
+	          }, function ( e ) {
+	            console.log( "取消选择图片" );
+	          }, {filter:"image"} );
+	      }
+	      // $('mycloum').tap(function(){
+	      //   alert(1);
+	      //   galleryImg();
+	      // });
+	     
+	//      var kill= document.getElementsByClassName('.kill')[0];
+	//      var img= kill.getElementsByTagName(img);
+	//      $(img).
+	     
+	      var map=null;
+	      var first=true;
+	      var isclick=false;
+	      $('#myposition').click(function(){
+	        $('#mapWrap').show();
+	       plus.geolocation.getCurrentPosition( function ( p ) {
+	         alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
+	         map = new plus.maps.Map("map");
+	         var point = new plus.maps.Point(p.coords.longitude ,p.coords.latitude);
+	         map.centerAndZoom( point,18 );
+	         map.showUserLocation( true );
+	           plus.maps.Map.reverseGeocode(point,{},function(event){
+	             var address = event.address;  // 转换后的地理位置
+	             var point = event.coord;   // 转换后的坐标信息
+	             var coordType = event.coordType;  // 转换后的坐标系类型
+	             var span=document.getElementById('mapWrap').getElementsByTagName('span')[0];
+	             span.innerHTML="当前附近位置:"+address;
+	         
+	           },function(e){
+	             alert("Failed:"+JSON.stringify(e));
+	           });
+	           
+	       }, function ( e ) {
+	         alert( "Geolocation error: " + e.message );
+	       } );
+	        
+	      });
+	        
+	      $('#close').tap(function(){
+	        if(isclick){
+	          map.hide();
+	        }else{
+	          map.show();
+	        }
+	        isclick=!isclick;
+	//         $('#mapWrap').hide();
+	      });
+
 
 /***/ },
 /* 2 */

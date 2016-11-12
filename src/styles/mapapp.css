@@ -1,0 +1,44 @@
+
+    	#mapWrap{
+    		width: 100%;
+    		height: 100%;
+    		position: absolute;
+    		z-index: 10000;
+    		background: red;
+    		left: 0;
+    		top: 200px;
+    		
+    	}
+    	#mapWrap button{
+    		width: 50px;
+    		height: 50px;
+    		position: absolute;
+    		right: 20px;
+    		top: 10px;
+    		border-radius: 50%;
+    		z-index: 1000;
+    	}
+    	#mapWrap span{
+    		display: block;
+    		z-index: 1000;
+    		width: 100px;
+    		height: 50px;
+    		line-height: 30px;
+    		position: absolute;
+    		top: -10px;
+    		right: 10px;
+    		background: black;
+    		color: #FFFFFF;
+    		
+    	}
+    	#map{
+    		width: 100%;
+    		height: 80%;
+    		top: 20%;
+    		left: 0;
+    		position: relative;
+    		z-index: 900;
+    		width: 20px;
+    		height: 50px; 
+    		display: flex;
+    	}
