@@ -1,6 +1,6 @@
 #footer{
 	display:flex;
-	justify-content:space-between;
+	justify-content:center;
 	align-items:center;
 	div{
 	   text-align:center;
@@ -25,7 +25,7 @@
 }
 #header{
 	display:flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items:center;
 	button{
 	  color:#fff;
@@ -40,11 +40,10 @@
       }
 	}
 	img{
-	  width:70px;
-	  height:70px;
+	  width:80px;
+	  height:80px;
 	  border-radius:50%;
-	  box-shadow: 0px 0px 2px #fff;   
-	  margin-top:3px; 
+	  box-shadow: 0px 0px 2px #fff;    
 	}
 }
 .proli{
@@ -92,7 +91,6 @@
 	      flex:1;
 	      border-radius:10px;
 	      margin-right:10px;
-	      height:auto;
 	    }
 	    div{
 	     flex:2;
@@ -143,11 +141,10 @@
     .link{
        width:70%;
        font-size:16px;
-       margin:30px 0;
     }
     .photo{
        width:50%;
-       height:90px;
+       height:130px;
        border-radius:10px;
        font-size:16px;
        padding:10px;
@@ -155,11 +152,9 @@
     .ewm{
        width:45%;
        height:125px;
-       margin:20px 0;
     }
     .computer{
         width:80%;
-        height:100px;
         margin-top:20px;
     }
 }

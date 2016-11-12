@@ -1,0 +1,159 @@
+.slide1 {
+  text-align: center;
+  background: url(../images/bg1.png) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+  .slide1 .tit {
+    width: 100%;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    flex: 1; }
+    .slide1 .tit .border {
+      width: 70%;
+      height: 80px;
+      line-height: 80px;
+      margin: 50px auto;
+      background: url(../images/border.png) no-repeat;
+      background-size: 100% 100%; }
+    .slide1 .tit .person {
+      position: absolute;
+      top: 10px;
+      color: #333;
+      font-size: 20px;
+      left: 45%; }
+  .slide1 .center {
+    width: 100%;
+    height: 40%;
+    margin: 0 auto;
+    background: url(../images/bg2.png) no-repeat center center;
+    background-size: 80%;
+    flex: 3;
+    position: relative;
+    text-align: center; }
+    .slide1 .center .computer {
+      width: 70%;
+      height: 45%;
+      top: 30%;
+      left: 20%;
+      position: absolute; }
+    .slide1 .center .pen {
+      position: absolute;
+      left: 30%;
+      top: 30%;
+      width: 20px;
+      height: 40px; }
+    .slide1 .center .book {
+      position: absolute;
+      right: 10%;
+      top: 35%;
+      width: 45px;
+      height: 60px; }
+    .slide1 .center .books {
+      position: absolute;
+      left: 28%;
+      top: 50%;
+      width: 45px;
+      height: 60px; }
+
+.slide2, .slide3 {
+  position: relative;
+  text-align: left;
+  background: url(../images/bg3.png) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+  .slide2 .photo, .slide3 .photo {
+    width: 100px;
+    height: 143px;
+    background: url(../images/5e2a2ccc-3731-4d5d-84e3-b3e12787d8ad-0347.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 10px;
+    top: 120px;
+    color: red;
+    box-sizing: border-box;
+    padding: 5px; }
+  .slide2 .photo img, .slide3 .photo img {
+    width: 100%;
+    height: 100%;
+    float: left; }
+  .slide2 .header, .slide3 .header {
+    width: 100%;
+    height: 100px;
+    text-align: center; }
+    .slide2 .header img, .slide3 .header img {
+      width: 20%;
+      float: left;
+      left: 10px;
+      top: 30px;
+      position: absolute; }
+    .slide2 .header span, .slide3 .header span {
+      background: url(../images/4233f5ae-e5e1-47df-b177-99d12cdd7d4c-3494.png) no-repeat;
+      background-size: 100% 100%;
+      width: 50%;
+      height: 70px;
+      line-height: 70px;
+      color: #fff;
+      display: inline-block;
+      font-size: 30px;
+      font-weight: 800;
+      margin-top: 10px; }
+  .slide2 .footer, .slide3 .footer {
+    width: 100%;
+    height: 100px;
+    background: url(../images/dc2f6395-7c64-416c-909a-5af93f2916f9-2366.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 14px; }
+    .slide2 .footer .pic, .slide3 .footer .pic {
+      position: absolute;
+      bottom: 0px;
+      right: 10px;
+      width: 30%;
+      height: 40%; }
+  .slide2 .content, .slide3 .content {
+    width: 100%;
+    flex: 1; }
+    .slide2 .content ul li, .slide3 .content ul li {
+      list-style: none;
+      line-height: 30px;
+      padding-left: 10px; }
+    .slide2 .content ul, .slide3 .content ul {
+      margin-top: 20px; }
+    .slide2 .content ul li i, .slide3 .content ul li i {
+      font-size: 30px; }
+    .slide2 .content ul li span, .slide3 .content ul li span {
+      background: #f2ff01;
+      padding: 5px;
+      color: #388BB6;
+      dispaly: inline-block;
+      border-radius: 10px;
+      margin-left: 10px; }
+
+.slide3 .content {
+  boxsizing: border-box;
+  padding: 10%;
+  text-align: center; }
+  .slide3 .content .resume {
+    background: url(../images/00edd618-1997-4880-b20e-24217e962067.png) no-repeat;
+    background-size: 100% 100%;
+    text-indent: 20px;
+    boxsizing: border-box;
+    padding: 10%;
+    line-height: 2;
+    font-size: 14px;
+    text-align: left; }
+  .slide3 .content button {
+    width: 50%;
+    height: 30px;
+    border: 0;
+    margin-top: 20px;
+    background: #C8FF00;
+    border-radius: 8px; }
